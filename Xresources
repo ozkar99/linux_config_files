@@ -1,0 +1,22 @@
+URxvt.geometry: 400x30 
+URxvt.buffered: true
+URxvt.background: black
+URxvt.foreground: grey
+URxvt.font:xft:Dina:pixelsize=12:antialias=true
+URxvt.scrollBar: false
+URxvt.fading: 10
+URxvt.fadeColor: white
+URxvt.cursorBlink: true
+
+! Transparency:
+URxvt.shading: 20
+URxvt.tintColor: white
+URxvt.inheritPixmap: true
+URxvt.transparent:true
+
+! clickable url:
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1 
+URxvt.underlineURLs: true
+URxvt.colorUL: #4682B4
