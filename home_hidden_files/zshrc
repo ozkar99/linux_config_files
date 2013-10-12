@@ -1,0 +1,54 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/ozkar/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# urxvt support
+bindkey "\e[8~" end-of-line
+bindkey "\e[7~" beginning-of-line
+bindkey "\e[5~" beginning-of-history
+bindkey "\e[6~" end-of-history
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" quoted-insert
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+
+# user ease
+BASEPATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+OPTBIN="/opt/metasploit:/opt/pt"
+PERL_BIN="/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/bin/site_perl"
+JAVA_PATH="/opt/java"
+CLASS_PATH="/opt/java"
+JAVA_BIN="$JAVA_PATH/bin"
+GEMS_PATH="/home/ozkar/.gem/ruby/2.0.0/bin"
+
+PATH="$BASEPATH:$OPTBIN:$PERL_BIN:$JAVA_BIN:$GEMS_PATH"
+
+alias ls='ls --color=auto'
+alias makepkg='makepkg -i -s'
+alias yaourt='yaourt --noconfirm'
+PS1='[%n@%m %~]$ '
+
+
+# TOR
+#http_proxy=http://127.0.0.1:8118/
+#HTTP_PROXY=$http_proxy
+#export http_proxy HTTP_PROXY
+
+#export PERL_LOCAL_LIB_ROOT="/home/ozkar/perl5";
+#export PERL_MB_OPT="--install_base /home/ozkar/perl5";
+#export PERL_MM_OPT="INSTALL_BASE=/home/ozkar/perl5";
+#export PERL5LIB="/home/ozkar/perl5/lib/perl5/i686-linux-thread-multi:/home/ozkar/perl5/lib/perl5";
+#export PATH="/home/ozkar/perl5/bin:$PATH";
