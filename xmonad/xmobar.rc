@@ -1,0 +1,10 @@
+Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+, bgColor = "#222222"
+, fgColor = "#CCCCCC"
+, position = Top
+, lowerOnStart = False
+, commands = [ Run Com "dwm_status" [] "" 3 , Run StdinReader]
+, sepChar = "%"
+, alignSep = "}{"
+, template = " %StdinReader% }{ %dwm_status%"
+}
