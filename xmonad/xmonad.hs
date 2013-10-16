@@ -39,16 +39,28 @@ main = xmonad =<< statusBar myxmobar myPP toggleStrutsKey myConfig
 myConfig = defaultConfig 
       { terminal            = "urxvt"
       , workspaces          = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-      , keys                = keys'
+      , keys                = myKeys
       , modMask             = mod1Mask
       , logHook = dynamicLogWithPP $ myPP
       , normalBorderColor   = colorBg
       , focusedBorderColor  = colorBgFocus
       , borderWidth         = 2
+      , manageHook = manageDocks <+> myManageHook
 }
+
+--manage hook
+
+
+myManageHook =  composeAll
+-- per-window options, use `xprop' to learn window names and classes
+                        [ className =? "MPlayer"        --> doFloat
+                        , className =? "feh"           --> doFloat
+                        , title     =? "EPresent"       --> doFloat
+                        ]
 
 --dmenu args
 dmenu = "dmenu_run" ++ " -nb " ++ show(colorBg) ++ " -nf " ++ show(colorFg) ++ " -sb " ++ show (colorBgFocus) ++ " -sf " ++ show (colorFgFocus) ++ " -fn " ++ show (dmenuFont)
+dmenu_mpc = "dmenu_mpc" ++ " -nb " ++ show(colorBg) ++ " -nf " ++ show(colorFg) ++ " -sb " ++ show (colorBgFocus) ++ " -sf " ++ show (colorFgFocus) ++ " -fn " ++ show (dmenuFont)
 
 --bar
 myxmobar = "xmobar /home/ozkar/.xmonad/xmobar.rc" 
@@ -67,18 +79,19 @@ myPP = xmobarPP
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- Key mapping {{{
-keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask,                    xK_p        ), spawn dmenu)
     , ((modMask .|. shiftMask,      xK_Return   ), spawn $ XMonad.terminal conf)
     , ((modMask .|. shiftMask,      xK_c        ), kill)
     , ((modMask .|. shiftMask,      xK_l        ), spawn "slock")
     -- Media Keys
-    , ((0,                          0x1008ff12  ), spawn "amixer -q sset Headphone toggle")        -- XF86AudioMute
-    , ((0,                          0x1008ff11  ), spawn "amixer -q sset Headphone 5%-")   -- XF86AudioLowerVolume
-    , ((0,                          0x1008ff13  ), spawn "amixer -q sset Headphone 5%+")   -- XF86AudioRaiseVolume
-    , ((0,                          0x1008ff14  ), spawn "rhythmbox-client --play-pause")
-    , ((0,                          0x1008ff17  ), spawn "rhythmbox-client --next")
-    , ((0,                          0x1008ff16  ), spawn "rhythmbox-client --previous")
+    , ((mod4Mask,                   xK_m        ), spawn "amixer -q sset Master toggle")        -- XF87AudioMute
+    , ((mod4Mask,                   xK_minus    ), spawn "amixer -q sset Master 5%-")   -- XF86AudioLowerVolume
+    , ((mod4Mask,                   xK_equal    ), spawn "amixer -q sset Master 5%+")   -- XF86AudioRaiseVolume
+    , ((mod4Mask,                   xK_c        ), spawn "mpc toggle")
+    , ((mod4Mask,                   xK_x        ), spawn "mpc prev")
+    , ((mod4Mask,                   xK_v        ), spawn "mpc next")
+    , ((mod4Mask,                   xK_p        ), spawn dmenu_mpc )
  
     -- layouts
     , ((modMask,                    xK_space    ), sendMessage NextLayout)
