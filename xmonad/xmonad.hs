@@ -31,6 +31,7 @@ colorFgFocus = "#FFFFFF"
 colorFg = "#CCCCCC"
 colorBg = "#222222"
 dmenuFont = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+dmenuSize = "14"
 
 --main
 main = xmonad =<< statusBar myxmobar myPP toggleStrutsKey myConfig 
@@ -59,8 +60,8 @@ myManageHook =  composeAll
                         ]
 
 --dmenu args
-dmenu = "dmenu_run" ++ " -nb " ++ show(colorBg) ++ " -nf " ++ show(colorFg) ++ " -sb " ++ show (colorBgFocus) ++ " -sf " ++ show (colorFgFocus) ++ " -fn " ++ show (dmenuFont)
-dmenu_mpc = "dmenu_mpc" ++ " -nb " ++ show(colorBg) ++ " -nf " ++ show(colorFg) ++ " -sb " ++ show (colorBgFocus) ++ " -sf " ++ show (colorFgFocus) ++ " -fn " ++ show (dmenuFont)
+dmenu = "dmenu_run" ++ " -nb " ++ show(colorBg) ++ " -nf " ++ show(colorFg) ++ " -sb " ++ show (colorBgFocus) ++ " -sf " ++ show (colorFgFocus) ++ " -fn " ++ show (dmenuFont) ++ "-size" ++ show(dmenuSize)
+dmenu_mpc = "dmenu_mpc" ++ " -nb " ++ show(colorBg) ++ " -nf " ++ show(colorFg) ++ " -sb " ++ show (colorBgFocus) ++ " -sf " ++ show (colorFgFocus) ++ " -fn " ++ show (dmenuFont) ++ "-size" ++ show (dmenuSize)
 
 --bar
 myxmobar = "xmobar /home/ozkar/.xmonad/xmobar.rc" 
@@ -71,7 +72,7 @@ myPP = xmobarPP
             , ppUrgent              = xmobarColor   colorFg         colorBg
             , ppVisible             = xmobarColor   colorFg         colorBg
             , ppHidden              = xmobarColor   colorFg         colorBg
-            , ppTitle               = xmobarColor   colorFgFocus   colorBg 
+            , ppTitle               = xmobarColor   colorFgFocus    colorBg 
             , ppSep                 = " : "
             }
 
@@ -96,7 +97,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- layouts
     , ((modMask,                    xK_space    ), sendMessage NextLayout)
     , ((modMask .|. shiftMask,      xK_space    ), setLayout $ XMonad.layoutHook conf)          -- reset layout on current desktop to default
-   --, ((modMask,                    xK_b        ), sendMessage ToggleStruts)
     , ((modMask,                    xK_n        ), refresh)
     , ((modMask,                    xK_Tab      ), windows W.focusDown)                         -- move focus to next window
     , ((modMask,                    xK_j        ), windows W.focusDown)
