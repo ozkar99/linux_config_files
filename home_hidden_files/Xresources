@@ -7,6 +7,11 @@ URxvt.scrollBar: false
 URxvt.fading: 10
 URxvt.fadeColor: white
 URxvt.cursorBlink: true
+URxvt*termName: rxvt-256color
+
+!keys
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End: \033[4~
 
 ! Transparency:
 URxvt.shading: 20
@@ -16,7 +21,7 @@ URxvt.transparent:true
 
 ! clickable url:
 URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/chromium
+URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1 
 URxvt.underlineURLs: true
 URxvt.colorUL: #4682B4

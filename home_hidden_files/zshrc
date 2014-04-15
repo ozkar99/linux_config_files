@@ -11,9 +11,20 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+
+# setup key accordingly
+#[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
+#[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+#[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+#[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+#[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
+#[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
+#[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+#[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+
 # urxvt support
-bindkey "\e[8~" end-of-line
-bindkey "\e[7~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[1~" beginning-of-line
 bindkey "\e[5~" beginning-of-history
 bindkey "\e[6~" end-of-history
 bindkey "\e[3~" delete-char
